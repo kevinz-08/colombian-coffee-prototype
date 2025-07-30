@@ -1,0 +1,19 @@
+@font-face {
+    font-family: "Playwrite";
+    src: url(../fonts/PlaywriteMX-VariableFont_wght.ttf);
+}
+
+@font-face {
+    font-family: "Bucklane";
+    src: url(../fonts/BucklaneScript_PERSONAL_USE_ONLY.otf);
+}
+
+@font-face {
+    font-family: "Lora";
+    src: url(../fonts/Lora-VariableFont_wght.ttf);
+}
+
+@font-face {
+    font-family: "Lora Italic";
+    src: url(../fonts/Lora-Italic-VariableFont_wght.ttf);
+}
