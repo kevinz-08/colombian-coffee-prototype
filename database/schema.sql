@@ -84,3 +84,8 @@ CREATE TABLE imagenes_variedad (
 
     FOREIGN KEY (id_variedad) REFERENCES variedades(id) ON DELETE CASCADE
 );
+
+
+SHOW TABLES;
+
+select * FROM variedad_resistencia;
