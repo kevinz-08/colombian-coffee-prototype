@@ -12,6 +12,9 @@ body {
     color: #f5c9a0;
     font-family: "Lora", serif;
 }
+html {
+    scroll-behavior: smooth;
+}
 .header {
     color: white;
     display: flex;
@@ -51,7 +54,6 @@ body {
 
 .header .nav-links a:hover {
     color: white;
-    text-decoration: underline;
     background-color: #e2c090cb;
     padding: 1rem;
     border-end-end-radius: 5px;
@@ -157,7 +159,7 @@ body {
 
 .about p {
     font-family: "Lora";
-    font-size: 2.3rem;
+    font-size: 2rem;
     line-height: 1.6;
     color: white;
     max-width: 65%;
