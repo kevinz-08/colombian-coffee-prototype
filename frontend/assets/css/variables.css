@@ -17,3 +17,8 @@
     font-family: "Lora Italic";
     src: url(../fonts/Lora-Italic-VariableFont_wght.ttf);
 }
+
+@font-face {
+    font-family: "GreatVibes";
+    src: url(../fonts/GreatVibes-Regular.ttf);
+}

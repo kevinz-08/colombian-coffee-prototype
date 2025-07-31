@@ -1,0 +1,9 @@
+{
+    "name": "jdmeneses27/colombian-coffee-prototype-1",
+    "autoload": {
+        "psr-4": {
+            "Jdmeneses27\\ColombianCoffeePrototype1\\": "src/"
+        }
+    },
+    "require": {}
+}

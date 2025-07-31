@@ -7,6 +7,11 @@
     font-family: "Arial", sans-serif;
 }
 
+body {
+    background-color: #261716;
+    color: #f5c9a0;
+    font-family: "Lora", serif;
+}
 .header {
     color: white;
     display: flex;
@@ -19,7 +24,7 @@
 }
 
 .header .name h1 {
-    font-family: "Playwrite";
+    font-family: "GreatVibes";
     font-size: 1.25rem;
     margin: 0.5rem 0;
 }
@@ -40,11 +45,21 @@
 .header .nav-links a {
     font-family: "Playwrite";
     text-decoration: none;
-    color: rgb(255, 255, 255);
+    color: #f5c9a0;
     font-size: 1rem;
 }
 
-.background-image {
+.header .nav-links a:hover {
+    color: white;
+    text-decoration: underline;
+    background-color: #e2c090cb;
+    padding: 1rem;
+    border-end-end-radius: 5px;
+    border-end-start-radius: 5px;
+    padding-top: 10rem;
+}
+
+.background-video {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -52,6 +67,18 @@
     height: 100%;
     object-fit: cover;
     transform: translate(-50%, -50%);
+        -webkit-mask: linear-gradient(
+        to bottom,
+        black 0%,
+        black 60%,
+        transparent 100%
+    );
+    mask: linear-gradient(
+        to bottom,
+        black 0%,
+        black 60%,
+        transparent 100%
+    );
     z-index: -1;
 }
 
@@ -62,30 +89,87 @@
     top: 50%;
     left: 5%; /* Default left-aligned for larger screens */
     transform: translateY(-50%); /* Only vertical centering */
-    text-align: center; /* Align text to the left */
+    text-align: left; /* Align text to the left */
     z-index: 1;
     width: 90%;
     max-width: 950px; /* Smaller max-width for left-aligned content */
 }
 
 .background-text h2 {
-    font-family: "Playwrite";
-    font-size: 50px; /* Large font size for mobile, scales with screen */
+    font-family: "GreatVibes";
+    font-size: 80px; /* Large font size for mobile, scales with screen */
     margin-bottom: 4vw;
+    color: transparent;
+    -webkit-text-stroke: 0.3px #dfc49d ; /* borde café */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
 }
 
 .background-text p {
     font-family: "Lora";
+    color: #DABB9E;
     font-size: 30px; /* Large font size for mobile, scales with screen */
     line-height: 1.5;
     max-width: 100%;
 }
-.catalogo {
+
+.logearse {
+    background-color: #fff3e05d  ;
+    color: #f5c9a0;
+    border: 5px solid #E0A872;
+    border-radius: 30px;
+    padding: 1vw 4vw;
+    font-size: 1.50rem;
+    cursor: pointer;
+    margin-top: 4vw;
+}
+.about {
     position: absolute;
-    width: 70%;
-    height: 70%;
-    background-color: rgb(0, 0, 0);
-    top: 100%;
+    width: 60%;
+    height: 50%;
+    background-color: #8D685E;
+    top: 120%;
+    left: 20%;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: right;
+    border-left: 10px solid #E0A872;
+    border-top: 10px solid #E0A872;
+    color: #f5c9a0;
+    padding: 2vw;
+    border-radius: 20px;
+
+}
+
+.about h1 {
+    font-family: "GreatVibes";
+    font-size: 8rem;
+    margin-bottom: 2vw;
+    color: transparent;
+    -webkit-text-stroke: 0.3px #F8E4BE; /* borde café */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+    text-align: center;
+    margin-top: -40%;
+    position: absolute;
+    left: 50%;
+}
+
+.about p {
+    font-family: "Lora";
+    font-size: 2.3rem;
+    line-height: 1.6;
+    color: white;
+    max-width: 65%;
+    margin: 0 0 0 40%;
+    text-align: left;
+}
+
+.about img {
+    margin-left: -20%;
+    margin-top: -5%;
+    width: 55%;
+    position: absolute;
 }
 
 /* Ensure mobile devices have centered text and larger fonts */
