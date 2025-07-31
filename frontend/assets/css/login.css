@@ -15,21 +15,26 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #F0F4F3;
 }
 .container {
-    border: 2px solid black;
+    /* border: 2px solid black; */
     width: 800px;
     height: 500px;
     display: flex;
     position: relative;
+    background-color: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgb(0,0,0,0.3);
 }
 .container-form {
-    border: 2px solid green;
+    /* border: 2px solid green; */
     width: 100%;
     overflow: hidden;
 }
 .container-form form {
-    border: 2px solid red;
+    /* border: 2px solid red; */
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -82,6 +87,28 @@ body {
     margin-bottom: 20px ;
     margin-top: 5px;
 }
+.button1 {
+    width: 170px;
+    height: 45px;
+    font-size: 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    background-color: #8B4513;
+    color: white;
+}
+.button2 {
+    width: 170px;
+    height: 45px;
+    font-size: 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    background-color: #D2691E;
+    color: white;
+}
 .button {
     width: 170px;
     height: 45px;
@@ -90,9 +117,9 @@ body {
     border-radius: 5px;
     cursor: pointer;
     margin-top: 10px;
-    background-color: #3AB397;
     color: white;
 }
+
 /*Animation form*/
 
 .sign-up {
@@ -114,12 +141,15 @@ body {
     display: flex;
     align-items: center;
     transform: translateX(100%);
-    background-color: #3AB397;
+    background-color: #8B4513;
+    transition: transform 0.5s ease-in-out, border-radius 0.5s ease-in-out;
     overflow: hidden;
+    border-radius: 50% 0 0 50%;
 }
 .container.toggle .container-welcome {
     transform: translateX(0);
-
+    border-radius: 0 50% 50% 0;
+    background-color: #D2691E;
 }
 .container-welcome .welcome{
     /* border: 2px solid red; */
@@ -144,6 +174,7 @@ body {
 }
 .container-welcome .button{
     border: 2px solid white;
+    background-color: transparent;
 }
 .container.toggle .welcome-sign-in{
     transform: translateX(0);
