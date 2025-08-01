@@ -1,16 +1,12 @@
 <?php
-use Psr\Http\Message\ResponseInterface as Response;
-use Psr\Http\Message\ServerRequestInterface as Request;
-use Slim\Factory\AppFactory;
 
-require __DIR__ . '/home/camper/colombian-coffee-prototype/vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
+
+use Slim\Factory\AppFactory;
 
 $app = AppFactory::create();
 
-$app->get('/hello/{name}', function (Request $request, Response $response, array $args) {
-    $name = $args['name'];
-    $response->getBody()->write("Hello, $name");
-    return $response;
-});
+// Cargar rutas separadas
+(require __DIR__ . '/../app/Routes/api.php')($app);
 
 $app->run();
