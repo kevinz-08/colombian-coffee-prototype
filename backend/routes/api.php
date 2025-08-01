@@ -1,36 +1,23 @@
 <?php
 
+use Slim\App;
 use App\Controllers\VarietyController;
 
-require_once __DIR__ . '/../app/Controllers/VarietyController.php';
+return function (App $app) {
+    $app->group('/api', function ($group) {
+        // Obtener todas las variedades
+        $group->get('/variedades', [VarietyController::class, 'index']);
 
-$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-$method = $_SERVER['REQUEST_METHOD'];
+        // Obtener una variedad por ID
+        $group->get('/variedades/{id}', [VarietyController::class, 'show']);
 
-$controller = new VarietyController();
+        // Crear una nueva variedad
+        $group->post('/variedades', [VarietyController::class, 'store']);
 
-switch ($uri) {
-    case '/variedades':
-        if ($method === 'GET') {
-            $controller->index();
-        } elseif ($method === 'POST') {
-            $controller->store();
-        }
-        break;
+        // Actualizar una variedad por ID
+        $group->put('/variedades/{id}', [VarietyController::class, 'update']);
 
-    case (preg_match('/\/variedades\/(\d+)/', $uri, $matches) ? true : false):
-        $id = $matches[1];
-        if ($method === 'GET') {
-            $controller->show($id);
-        } elseif ($method === 'PUT') {
-            $controller->update($id);
-        } elseif ($method === 'DELETE') {
-            $controller->destroy($id);
-        }
-        break;
-
-    default:
-        http_response_code(404);
-        echo json_encode(['error' => 'Ruta no encontrada']);
-        break;
-}
+        // Eliminar una variedad por ID
+        $group->delete('/variedades/{id}', [VarietyController::class, 'destroy']);
+    });
+};

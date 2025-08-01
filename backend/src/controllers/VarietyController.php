@@ -3,112 +3,63 @@
 namespace App\Controllers;
 
 use App\Models\Variety;
-use Exception;
-
-require_once __DIR__ . '/../Models/Variety.php';
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
 
 class VarietyController
 {
-    public function index() {
-        try {
-            $variety = new Variety();
-            $data = $variety->getAll();
-            http_response_code(200);
-            echo json_encode($data);
-        } catch (Exception $e) {
-            http_response_code(500);
-            echo json_encode(['error' => $e->getMessage()]);
+    // Obtener todas las variedades
+    public function index(Request $request, Response $response, array $args): Response {
+        $variety = new Variety();
+        $data = $variety->getAll();
+
+        $response->getBody()->write(json_encode($data));
+        return $response->withHeader('Content-Type', 'application/json');
+    }
+
+    // Obtener una variedad por ID
+    public function show(Request $request, Response $response, array $args): Response {
+        $id = $args['id'];
+        $variety = new Variety();
+        $data = $variety->getById($id);
+
+        if ($data) {
+            $response->getBody()->write(json_encode($data));
+            return $response->withHeader('Content-Type', 'application/json');
+        } else {
+            $response->getBody()->write(json_encode(['error' => 'Variedad no encontrada']));
+            return $response->withStatus(404)->withHeader('Content-Type', 'application/json');
         }
     }
 
-    public function show($id) {
-        try {
-            $variety = new Variety();
-            $data = $variety->getById($id);
+    // Crear una nueva variedad
+    public function store(Request $request, Response $response, array $args): Response {
+        $input = $request->getParsedBody();
+        $variety = new Variety();
+        $success = $variety->create($input);
 
-            if (!$data) {
-                http_response_code(404);
-                echo json_encode(['error' => 'Variety not found']);
-                return;
-            }
-
-            http_response_code(200);
-            echo json_encode($data);
-        } catch (Exception $e) {
-            http_response_code(500);
-            echo json_encode(['error' => $e->getMessage()]);
-        }
+        $response->getBody()->write(json_encode(['success' => $success]));
+        return $response->withHeader('Content-Type', 'application/json');
     }
 
-    public function store() {
-        $input = json_decode(file_get_contents('php://input'), true);
+    // Actualizar una variedad existente
+    public function update(Request $request, Response $response, array $args): Response {
+        $id = $args['id'];
+        $input = $request->getParsedBody();
+        $variety = new Variety();
+        $success = $variety->update($id, $input);
 
-        // Optional: Add validation
-        if (!isset($input['name']) || empty($input['name'])) {
-            http_response_code(400);
-            echo json_encode(['error' => 'Name is required']);
-            return;
-        }
-
-        try {
-            $variety = new Variety();
-            $success = $variety->create($input);
-
-            if ($success) {
-                http_response_code(201); // Created
-                echo json_encode(['success' => true]);
-            } else {
-                http_response_code(500);
-                echo json_encode(['error' => 'Failed to create variety']);
-            }
-        } catch (Exception $e) {
-            http_response_code(500);
-            echo json_encode(['error' => $e->getMessage()]);
-        }
+        $response->getBody()->write(json_encode(['success' => $success]));
+        return $response->withHeader('Content-Type', 'application/json');
     }
 
-    public function update($id) {
-        $input = json_decode(file_get_contents('php://input'), true);
+    // Eliminar una variedad
+    public function destroy(Request $request, Response $response, array $args): Response {
+        $id = $args['id'];
+        $variety = new Variety();
+        $success = $variety->delete($id);
 
-        // Optional: Add validation
-        if (!isset($input['name']) || empty($input['name'])) {
-            http_response_code(400);
-            echo json_encode(['error' => 'Name is required']);
-            return;
-        }
-
-        try {
-            $variety = new Variety();
-            $success = $variety->update($id, $input);
-
-            if ($success) {
-                http_response_code(200);
-                echo json_encode(['success' => true]);
-            } else {
-                http_response_code(404);
-                echo json_encode(['error' => 'Variety not found']);
-            }
-        } catch (Exception $e) {
-            http_response_code(500);
-            echo json_encode(['error' => $e->getMessage()]);
-        }
-    }
-
-    public function destroy($id) {
-        try {
-            $variety = new Variety();
-            $success = $variety->delete($id);
-
-            if ($success) {
-                http_response_code(200);
-                echo json_encode(['success' => true]);
-            } else {
-                http_response_code(404);
-                echo json_encode(['error' => 'Variety not found']);
-            }
-        } catch (Exception $e) {
-            http_response_code(500);
-            echo json_encode(['error' => $e->getMessage()]);
-        }
+        $response->getBody()->write(json_encode(['success' => $success]));
+        return $response->withHeader('Content-Type', 'application/json');
     }
 }
