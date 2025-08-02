@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  app:
+    image: php:8.2-apache
+    container_name: slim_app
+    ports:
+      - "8080:80"
+    volumes:
+      - ./backend:/var/www/html
+    depends_on:
+      - db
+    networks:
+      - slimnet
+    environment:
+      - MYSQL_HOST=db
+      - MYSQL_DATABASE=colombian_coffee
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=cafe123
+
+  db:
+    image: mysql:8.0
+    container_name: slim_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: cafe123
+      MYSQL_DATABASE: colombian_coffee
+    ports:
+      - "3310:3306"
+    volumes:
+      - dbdata:/var/lib/mysql
+    networks:
+      - slimnet
+
+volumes:
+  dbdata:
+
+networks:
+  slimnet:
