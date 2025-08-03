@@ -27,6 +27,7 @@ CREATE TABLE grupo_genetico (
     grupo VARCHAR(100)
 );
 
+SELECT * FROM variedades;
 -- Tabla: variedades (central)
 CREATE TABLE variedades (
     id INT AUTO_INCREMENT PRIMARY KEY,

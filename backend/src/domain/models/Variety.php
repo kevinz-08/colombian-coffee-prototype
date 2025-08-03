@@ -14,91 +14,154 @@
 //
 // si necesitas cambiar esto, primero reza, luego haz una copia de seguridad,
 //y por ultimo... SUERTE.
+
 namespace App\Domain\Models;
 
 use PDO;
 use PDOException;
 use App\Config\Database;
 
-
-
 class Variety
 {
     private $conn;
-    private $table = 'variedades'; // Optional: Make table name a class property
+    private $table = 'variedades';
 
     public function __construct() {
-        // Enable PDO to throw exceptions on errors
         $this->conn = (new Database())->connect();
         $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
 
-    // Get all varieties
+    // Obtener todas las variedades
     public function getAll() {
         try {
             $stmt = $this->conn->query("SELECT * FROM {$this->table}");
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
-            // Log or handle error
             return ['error' => $e->getMessage()];
         }
     }
 
-    // Get a variety by its ID
+    // Obtener una variedad por ID
     public function getById($id) {
         try {
             $stmt = $this->conn->prepare("SELECT * FROM {$this->table} WHERE id = ?");
             $stmt->execute([$id]);
             return $stmt->fetch(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
-            // Log or handle error
             return ['error' => $e->getMessage()];
         }
     }
 
-    // Create a new variety
+    // Crear una nueva variedad
     public function create($data) {
         try {
-            $sql = "INSERT INTO {$this->table} (nombre_comun, nombre_cientifico, descripcion) VALUES (?, ?, ?)";
-            $stmt = $this->conn->prepare($sql);
-            $success = $stmt->execute([
-                $data['nombre_comun'],
-                $data['nombre_cientifico'],
-                $data['descripcion']
-            ]);
-            return $success;
-        } catch (PDOException $e) {
-            // Log or handle error
-            return ['error' => $e->getMessage()];
-        }
-    }
+            $required = [
+                'nombre_comun',
+                'nombre_cientifico',
+                'descripcion',
+                'altitud_min',
+                'altitud_max',
+                'tiempo_cosecha',
+                'maduracion',
+                'nutricion',
+                'densidad_siembra',
+                'calidad_grano',
+                'id_porte',
+                'id_tamano_grano',
+                'id_rendimiento',
+                'id_grupo_genetico'
+            ];
 
-    // Update a variety
-    public function update($id, $data) {
-        try {
-            $sql = "UPDATE {$this->table} SET nombre_comun = ?, nombre_cientifico = ?, descripcion = ? WHERE id = ?";
+            foreach ($required as $field) {
+                if (!isset($data[$field])) {
+                    return ['error' => "Falta el campo obligatorio: $field"];
+                }
+            }
+
+            $sql = "INSERT INTO {$this->table} 
+                (nombre_comun, nombre_cientifico, descripcion, altitud_min, altitud_max, 
+                 tiempo_cosecha, maduracion, nutricion, densidad_siembra, calidad_grano, 
+                 id_porte, id_tamano_grano, id_rendimiento, id_grupo_genetico)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
             $stmt = $this->conn->prepare($sql);
+
             $success = $stmt->execute([
                 $data['nombre_comun'],
                 $data['nombre_cientifico'],
                 $data['descripcion'],
-                $id
+                $data['altitud_min'],
+                $data['altitud_max'],
+                $data['tiempo_cosecha'],
+                $data['maduracion'],
+                $data['nutricion'],
+                $data['densidad_siembra'],
+                $data['calidad_grano'],
+                $data['id_porte'],
+                $data['id_tamano_grano'],
+                $data['id_rendimiento'],
+                $data['id_grupo_genetico']
             ]);
+
             return $success;
         } catch (PDOException $e) {
-            // Log or handle error
             return ['error' => $e->getMessage()];
         }
     }
 
-    // Delete a variety
+    // Actualizar una variedad
+    public function update($id, $data) {
+        try {
+            $sql = "UPDATE {$this->table} SET 
+                nombre_comun = ?, 
+                nombre_cientifico = ?, 
+                descripcion = ?, 
+                altitud_min = ?, 
+                altitud_max = ?, 
+                tiempo_cosecha = ?, 
+                maduracion = ?, 
+                nutricion = ?, 
+                densidad_siembra = ?, 
+                calidad_grano = ?, 
+                id_porte = ?, 
+                id_tamano_grano = ?, 
+                id_rendimiento = ?, 
+                id_grupo_genetico = ? 
+                WHERE id = ?";
+
+            $stmt = $this->conn->prepare($sql);
+
+            $success = $stmt->execute([
+                $data['nombre_comun'],
+                $data['nombre_cientifico'],
+                $data['descripcion'],
+                $data['altitud_min'],
+                $data['altitud_max'],
+                $data['tiempo_cosecha'],
+                $data['maduracion'],
+                $data['nutricion'],
+                $data['densidad_siembra'],
+                $data['calidad_grano'],
+                $data['id_porte'],
+                $data['id_tamano_grano'],
+                $data['id_rendimiento'],
+                $data['id_grupo_genetico'],
+                $id
+            ]);
+
+            return $success;
+        } catch (PDOException $e) {
+            return ['error' => $e->getMessage()];
+        }
+    }
+
+    // Eliminar una variedad
     public function delete($id) {
         try {
             $stmt = $this->conn->prepare("DELETE FROM {$this->table} WHERE id = ?");
             $success = $stmt->execute([$id]);
             return $success;
         } catch (PDOException $e) {
-            // Log or handle error
             return ['error' => $e->getMessage()];
         }
     }

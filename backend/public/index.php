@@ -14,6 +14,7 @@
 //
 // si necesitas cambiar esto, primero reza, luego haz una copia de seguridad,
 //y por ultimo... SUERTE.
+
 require __DIR__ . '/../vendor/autoload.php';
 
 use Slim\Factory\AppFactory;
@@ -21,11 +22,14 @@ use Slim\Exception\HttpNotFoundException;
 use Slim\Routing\RouteCollectorProxy;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
-use Psr\Http\Server\RequestHandlerInterface; // ✅ Agregado
+use Psr\Http\Server\RequestHandlerInterface;
 
 $app = AppFactory::create();
 
-// ✅ Middleware para habilitar CORS (corregido según PSR-15)
+// ✅ Middleware para interpretar JSON
+$app->addBodyParsingMiddleware();
+
+// ✅ Middleware CORS
 $app->add(function (Request $request, RequestHandlerInterface $handler): Response {
     $response = $handler->handle($request);
     return $response
@@ -34,7 +38,7 @@ $app->add(function (Request $request, RequestHandlerInterface $handler): Respons
         ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
 });
 
-// ✅ Cargar las rutas de la API
+// ✅ Cargar rutas
 (require __DIR__ . '/../routes/api.php')($app);
 
 $app->run();

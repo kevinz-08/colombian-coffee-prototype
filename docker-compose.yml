@@ -1,8 +1,8 @@
-version: '3.8'
-
 services:
   app:
-    image: php:8.2-apache
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: slim_app
     ports:
       - "8080:80"
@@ -13,10 +13,10 @@ services:
     networks:
       - slimnet
     environment:
-      - MYSQL_HOST=db
-      - MYSQL_DATABASE=colombian_coffee
-      - MYSQL_USER=root
-      - MYSQL_PASSWORD=cafe123
+      MYSQL_HOST: db
+      MYSQL_DATABASE: colombian_coffee
+      MYSQL_USER: root
+      MYSQL_PASSWORD: cafe123
 
   db:
     image: mysql:8.0
@@ -29,6 +29,7 @@ services:
       - "3310:3306"
     volumes:
       - dbdata:/var/lib/mysql
+      - ./backend/db:/docker-entrypoint-initdb.d
     networks:
       - slimnet
 

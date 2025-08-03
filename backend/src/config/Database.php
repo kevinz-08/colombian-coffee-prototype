@@ -21,7 +21,7 @@ use PDO;
 use PDOException;
 
 class Database {
-    private $host = 'db';            // Dirección del host (localhost para Docker con puerto expuesto)
+    private $host = 'localhost';            // Dirección del host (localhost para Docker con puerto expuesto)
     private $port = '3310';                 // Puerto mapeado desde Docker
     private $db_name = 'colombian_coffee';  // Nombre de la base de datos
     private $username = 'root';             // Usuario

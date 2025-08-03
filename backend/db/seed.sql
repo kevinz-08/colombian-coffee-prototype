@@ -79,4 +79,3 @@ INSERT INTO imagenes_variedad (id_variedad, url_imagen) VALUES
 (8, 'https://upload.wikimedia.org/wikipedia/commons/f/f6/Cafe_typica.jpg'),
 (9, 'https://upload.wikimedia.org/wikipedia/commons/a/ad/Geisha_coffee.jpg'),
 (10, 'https://upload.wikimedia.org/wikipedia/commons/1/1b/Cafe_maragogipe.jpg');
-
