@@ -1,0 +1,373 @@
+/* Variables CSS */
+:root{
+    --verde:#228B22;
+    --blanco:#fff;
+    --cafe:#6F4E37;
+    --cafe-claro:#D2B48C;
+    --cafe-oscuro:#3C2A1E;
+    --dorado:#DAA520;
+    --gris-claro:#f8f8f8;
+    --gris-medio:#666;
+    --titulos:'Georgia', serif;
+    --parrafos:'Arial', sans-serif;
+}
+
+/* Reset básico */
+html{
+    box-sizing: border-box;
+    font-size: 62.5%; /* 1rem = 10px */
+}
+
+body{
+    font-size: 1.6rem;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, var(--gris-claro) 0%, #e8e0d4 100%);
+    font-family: var(--parrafos);
+    line-height: 1.6;
+}
+
+*,*::after, *::before{
+    box-sizing: inherit;
+}
+
+/* Contenedor principal */
+.contenedor{
+    max-width: 120rem;
+    margin: 0 auto;
+    width: 95%;
+    padding: 3rem 0;
+}
+
+/* Tipografía */
+h1, h2{
+    font-family: var(--titulos);
+    color: var(--cafe-oscuro);
+}
+
+h3, p, a{
+    font-family: var(--parrafos);
+}
+
+/* Título principal */
+.titulo-principal{
+    text-align: center;
+    font-size: 4.5rem;
+    margin-bottom: 1rem;
+    color: var(--cafe-oscuro);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.subtitulo{
+    text-align: center;
+    font-size: 1.8rem;
+    color: var(--gris-medio);
+    margin-bottom: 4rem;
+    font-style: italic;
+}
+
+/* Utilidades */
+img{
+    max-width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.ocultar{
+    display: none;
+}
+
+/* Botones base */
+.btn{
+    text-decoration: none;
+    color: var(--blanco);
+    font-size: 1.6rem;
+    text-transform: capitalize;
+    padding: 1rem 2.5rem;
+    border-radius: 25px;
+    transition: all .3s ease-in-out;
+    cursor: pointer;
+    border: none;
+    font-family: var(--parrafos);
+    margin: 0.5rem;
+    font-weight: 500;
+}
+
+.btn-verde{
+    background: linear-gradient(135deg, var(--verde) 0%, #2E8B57 100%);
+    box-shadow: 0 4px 15px rgba(34, 139, 34, 0.3);
+}
+
+.btn-verde:hover{
+    background: linear-gradient(135deg, var(--cafe) 0%, var(--cafe-oscuro) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(111, 78, 55, 0.4);
+}
+
+/* Estilos de los filtros */
+.botones-filtros{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 4rem;
+}
+
+.botones-filtros button{
+    flex: 0 0 auto;
+    padding: 1.2rem 2.5rem;
+    min-width: 130px;
+}
+
+/* Grid de granos de café */
+.granos-cafe{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 3rem;
+    align-items: start; /* AGREGADO: Evita que se estiren */
+}
+/* Tarjetas de granos - CORREGIDO */
+.grano-cafe{
+    background: var(--blanco);
+    border: 1px solid #e1e1e1;
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    height: fit-content; /* AGREGADO: Altura automática basada en contenido */
+    min-height: auto; /* AGREGADO: Sin altura mínima forzada */
+    display: flex; /* AGREGADO: Flexbox para mejor control */
+    flex-direction: column; /* AGREGADO: Columna vertical */
+}
+
+.grano-cafe:hover{
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+}
+
+/* Efecto brillo al hover */
+.grano-cafe::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    transition: left 0.5s;
+}
+
+.grano-cafe:hover::before{
+    left: 100%;
+}
+
+/* Imagen de las tarjetas - CORREGIDO */
+.grano-cafe img{
+    width: 100%;
+    height: 200px; /* REDUCIDO de 250px a 200px */
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 1rem; /* AGREGADO: Margen inferior consistente */
+}
+
+/* Contenido de las tarjetas */
+.grano-cafe h2{
+    text-align: center;
+    font-size: 2.4rem;
+    color: var(--cafe-oscuro);
+    margin: 1rem 0; /* REDUCIDO margen */
+    flex-shrink: 0; /* AGREGADO: No se encoge */
+}
+
+.descripcion{
+    font-size: 1.5rem;
+    color: var(--gris-medio);
+    text-align: justify;
+    line-height: 1.7;
+    margin: 1rem 0; /* REDUCIDO margen */
+    flex-grow: 1; /* AGREGADO: Crece para ocupar espacio disponible */
+}
+
+/* Información básica - CORREGIDO */
+.info-basica{
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem 0; /* REDUCIDO margen */
+    flex-wrap: wrap;
+    gap: 1rem;
+    flex-shrink: 0; /* AGREGADO: No se encoge */
+}
+
+.info-basica span{
+    background: var(--gris-claro);
+    padding: 0.5rem 1rem;
+    border-radius: 15px;
+    font-size: 1.3rem;
+    color: var(--cafe-oscuro);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.info-basica i{
+    color: var(--verde);
+}
+
+/* Características - CORREGIDO */
+.caracteristicas{
+    display: flex;
+    justify-content: space-between;
+    margin: 1.5rem 0; /* REDUCIDO margen */
+    flex-wrap: wrap;
+    gap: 1rem;
+    flex-shrink: 0; /* AGREGADO: No se encoge */
+}
+
+.caracteristicas span{
+    background: linear-gradient(135deg, var(--dorado) 0%, #B8860B 100%);
+    color: var(--blanco);
+    padding: 0.7rem 1.2rem;
+    border-radius: 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    flex: 1;
+    text-align: center;
+    min-width: 120px;
+}
+
+/* Botón leer más - CORREGIDO */
+.btn-leer-mas{
+    width: 100%;
+    background: linear-gradient(135deg, var(--cafe) 0%, var(--cafe-oscuro) 100%);
+    color: var(--blanco);
+    padding: 1.2rem 2rem;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.6rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem; /* REDUCIDO margen */
+    flex-shrink: 0; /* AGREGADO: No se encoge */
+}
+
+.btn-leer-mas:hover{
+    background: linear-gradient(135deg, var(--verde) 0%, #2E8B57 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(34, 139, 34, 0.4);
+}
+
+/* Badge de categoría */
+.categoria-badge{
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: linear-gradient(135deg, var(--verde) 0%, #2E8B57 100%);
+    color: var(--blanco);
+    padding: 0.7rem 1.5rem;
+    border-radius: 20px;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+/* Media Queries - CORREGIDOS */
+@media(max-width: 768px) {
+    .granos-cafe{
+        grid-template-columns: 1fr;
+        gap: 2rem; /* REDUCIDO gap */
+    }
+    
+    .grano-cafe{
+        padding: 2rem; /* REDUCIDO padding */
+    }
+    
+    .grano-cafe img{
+        height: 180px; /* REDUCIDO altura en móvil */
+    }
+    
+    .titulo-principal{
+        font-size: 3.5rem;
+    }
+    
+    .botones-filtros button{
+        min-width: 100px;
+        padding: 1rem 1.5rem;
+        font-size: 1.4rem;
+    }
+    
+    .info-basica{
+        justify-content: center;
+    }
+    
+    .caracteristicas{
+        justify-content: center;
+    }
+    
+    .modal-body{
+        padding: 2rem;
+    }
+}
+
+@media(max-width: 480px) {
+    .grano-cafe{
+        padding: 1.5rem; /* REDUCIDO padding */
+    }
+    
+    .grano-cafe img{
+        height: 160px; /* REDUCIDO altura en móviles pequeños */
+    }
+    
+    .titulo-principal{
+        font-size: 3rem;
+    }
+    
+    .subtitulo{
+        font-size: 1.6rem;
+    }
+}
+/* Efectos adicionales */
+.btn-activo {
+    background: linear-gradient(135deg, var(--cafe) 0%, var(--cafe-oscuro) 100%) !important;
+    transform: scale(1.05) !important;
+    box-shadow: 0 6px 20px rgba(111, 78, 55, 0.4) !important;
+}
+
+.fade-out {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.4s ease;
+}
+
+.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.4s ease;
+}
+
+/* Estilos específicos para diferentes categorías */
+.grano-cafe[data-tipo="arabica"] .categoria-badge {
+    background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);
+}
+
+.grano-cafe[data-tipo="robusta"] .categoria-badge {
+    background: linear-gradient(135deg, #654321 0%, #8B4513 100%);
+}
+
+.grano-cafe[data-tipo="especialidad"] .categoria-badge {
+    background: linear-gradient(135deg, #DAA520 0%, #B8860B 100%);
+}
+
+.grano-cafe[data-tipo="regional"] .categoria-badge {
+    background: linear-gradient(135deg, #228B22 0%, #2E8B57 100%);
+}
+
