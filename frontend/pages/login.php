@@ -7,6 +7,25 @@
     <link rel="stylesheet" href="/frontend/assets/css/login.css">
 </head>
 <body>
+    <header class="header">
+        <div class="name">
+            <h1>Colombian Coffee</h1>
+        </div>
+        
+        <button class="menu-toggle" onclick="toggleMenu()">
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </button>
+        
+        <nav class="nav-links" id="navLinks">
+            <li><a href="#about">About</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </nav>
+    </header>
     <div class="background">
         <img src="../assets/Images/7d9c3508-9d2f-4242-aa48-cbaa665c8fb4.png" alt="">
     </div>

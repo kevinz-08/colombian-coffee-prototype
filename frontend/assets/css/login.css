@@ -17,6 +17,85 @@ body {
     align-items: center;
     background-color: #F0F4F3;
 }
+ .header {
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: auto;
+            padding: 1vw 5%;
+            flex-wrap: wrap;
+            min-height: 5vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+    }
+    .header .name h1 {
+        font-family: "GreatVibes";
+        font-size: 1.25rem;
+        margin: 0.5rem 0;
+    }
+    .header .nav-links {
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2vw;
+    }
+    .header .nav-links li {
+        display: block;
+        margin: 0.5rem;
+    }
+    .header .nav-links a {
+        font-family: "Playwrite";
+        text-decoration: none;
+        color: #f5c9a0;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+    }
+    .header .nav-links a:hover {
+        color: white;
+        background-color: #e2c090cb;
+        padding: 1rem;
+        border-end-end-radius: 5px;
+        border-end-start-radius: 5px;
+        padding-top: 10rem;
+    }
+    /* Botón hamburguesa - oculto por defecto */
+    .menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.5rem;
+        cursor: pointer;
+        padding: 0.5rem;
+    }
+    .hamburger {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+    .hamburger span {
+        width: 25px;
+        height: 3px;
+        background-color: white;
+        transition: all 0.3s ease;
+    }
+    /* Animación del botón hamburguesa */
+    .menu-toggle.active .hamburger span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+    .menu-toggle.active .hamburger span:nth-child(2) {
+        opacity: 0;
+    }
+    .menu-toggle.active .hamburger span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
+    }
+
+
 .background {
     position: fixed;
     top: 0;

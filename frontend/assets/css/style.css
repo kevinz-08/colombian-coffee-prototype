@@ -213,15 +213,27 @@ html {
 
 .carrusel-container {
             position: relative;
-            max-width: 100%;
+            max-width: 90%;
             margin: 0 auto;
             margin-top: 90%;
             background: white;
             border-radius: 15px;
             box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-            overflow: hidden;
         }
 
+.carrusel-container h1{
+        font-family: "GreatVibes";
+    font-size: 8rem;
+    margin-bottom: 2vw;
+    color: transparent;
+    -webkit-text-stroke: 0.3px #ce8e7c; /* borde café */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+    text-align: center;
+    position: absolute;
+    top: -25%;
+    left: 20%;
+    z-index: 2;
+}
         .carrusel-wrapper {
             overflow: hidden;
             position: relative;
@@ -275,39 +287,7 @@ html {
             transform: translateY(-5px);
         }
 
-        /* Tamaños responsivos - AGRANDADOS */
-        @media (min-width: 1200px) {
-            .elemento {
-                width: 500px;
-                height: 350px;
-            }
-        }
-
-        @media (min-width: 768px) and (max-width: 1199px) {
-            .elemento {
-                width: 350px;
-                height: 280px;
-            }
-        }
-
-        @media (max-width: 767px) {
-            .elemento {
-                width: 300px;
-                height: 250px;
-                margin: 15px 8px;
-                font-size: 18px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .elemento {
-                width: 320px;
-                height: 220px;
-                margin: 10px 5px;
-                font-size: 16px;
-            }
-        }
-
+        
         /* Flechas de navegación */
         .nav-arrow {
             position: absolute;
@@ -350,29 +330,7 @@ html {
 
 
 
-        @media (max-width: 480px) {
-            .nav-arrow {
-                width: 35px;
-                height: 35px;
-                font-size: 14px;
-            }
-            
-            .nav-arrow.prev {
-                left: 10px;
-            }
-            
-            .nav-arrow.next {
-                right: 10px;
-            }
-        }
 
-        .carrusel-title {
-            text-align: center;
-            padding: 20px;
-            color: #333;
-            font-size: 28px;
-            font-weight: bold;
-        }
         /* Flechas de navegación */
         .nav-arrow {
             position: absolute;
@@ -413,31 +371,99 @@ html {
             right: 15px;
         }
 
-
-
-        @media (max-width: 480px) {
-            .nav-arrow {
-                width: 35px;
-                height: 35px;
-                font-size: 14px;
-            }
-            
-            .nav-arrow.prev {
-                left: 10px;
-            }
-            
-            .nav-arrow.next {
-                right: 10px;
-            }
-        }
-
-        .carrusel-title {
+/* CONTACT */
+.contact-section {
+            background: linear-gradient(135deg, #d2691e81, #ff8c006e);
+            color: white;
+            padding: 50px 20px;
             text-align: center;
-            padding: 20px;
-            color: #333;
-            font-size: 28px;
-            font-weight: bold;
+            margin-top: 10%;
+            border-start-start-radius: 100px;
+            border-start-end-radius: 100px;
         }
+
+        .contact-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: white;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        /* Campo con error */
+        input.error, textarea.error {
+            border-color: red;
+            background: #ffe6e6;
+        }
+
+        /* Campo válido */
+        input.success, textarea.success {
+            border-color: green;
+            background: #e6ffe6;
+        }
+
+        /* Mensaje de error */
+        .error-msg {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .error-msg.show {
+            display: block;
+        }
+
+        .btn {
+            background: #000000;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .btn:hover {
+            background: #3d3d3d;
+        }
+
+        .info {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .info div {
+            margin: 10px;
+        }
+
+        @media (max-width: 600px) {
+            .info {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
 
 /* Ensure mobile devices have centered text and larger fonts */
 @media screen and (max-width: 768px) {
@@ -563,5 +589,98 @@ html {
     position: absolute;
 }
 
+.carrusel-container{
+    margin-top: 300%;
+}
+.elemento {
+    width: 10px;
+    height: 50px;
+    margin: 15px 8px;
+    font-size: 18px;
+}
+
+.elemento img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+    .carrusel-container h1 {
+    font-size: 54px;
+    top:-18%;
+    left: 10%;
+}
+
 
 }
+
+@media (min-width: 1200px) {
+            .elemento {
+                width: 500px;
+                height: 350px;
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 1199px) {
+            .elemento {
+                width: 350px;
+                height: 280px;
+            }
+        }
+
+
+        @media (max-width: 480px) {
+            .elemento {
+                width: 320px;
+                height: 220px;
+                margin: 10px 5px;
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-arrow {
+                width: 35px;
+                height: 35px;
+                font-size: 14px;
+            }
+            
+            .nav-arrow.prev {
+                left: 10px;
+            }
+            
+            .nav-arrow.next {
+                right: 10px;
+            }
+        }
+
+        
+        @media (max-width: 480px) {
+            .nav-arrow {
+                width: 35px;
+                height: 35px;
+                font-size: 14px;
+            }
+            
+            .nav-arrow.prev {
+                left: 10px;
+            }
+            
+            .nav-arrow.next {
+                right: 10px;
+            }
+        }
+                @media (max-width: 480px) {
+            .nav-arrow {
+                width: 35px;
+                height: 35px;
+                font-size: 14px;
+            }
+            
+            .nav-arrow.prev {
+                left: 10px;
+            }
+            
+            .nav-arrow.next {
+                right: 10px;
+            }
+        }

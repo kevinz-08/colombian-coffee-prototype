@@ -63,3 +63,19 @@ function toggleMenu() {
 
         window.onresize = () => setTimeout(update, 100);
         document.addEventListener('DOMContentLoaded', () => setTimeout(update, 200));
+
+// CONTACT //
+
+       document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const btn = document.querySelector('.submit-btn');
+            btn.style.background = '#27ae60';
+            btn.textContent = '¡Enviado!';
+            
+            setTimeout(() => {
+                btn.style.background = '#3498db';
+                btn.textContent = 'Enviar Mensaje';
+                this.reset();
+            }, 2000);
+        });
