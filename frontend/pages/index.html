@@ -5,16 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Colombian Coffee</title>
     <link rel="stylesheet" href="/frontend/assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <header class="header">
         <div class="name">
-        <h1>Colombian Coffee</h1>
+            <h1>Colombian Coffee</h1>
         </div>
-        <nav class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#products">Products</a></li>
-        <li><a href="#contact">Contact</a></li>
+        
+        <button class="menu-toggle" onclick="toggleMenu()">
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </button>
+        
+        <nav class="nav-links" id="navLinks">
+            <li><a href="#about">About</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#contact">Contact</a></li>
         </nav>
     </header>
     <main>
@@ -46,5 +56,43 @@
                     <p>Enjoy the pure taste of our organic Colombian coffee, grown without pesticides or chemicals.</p>
                 </div> -->
         </div>
+
+
+<div class="carrusel-container">
+        <button class="nav-arrow prev" id="prevBtn">‹</button>
+        <button class="nav-arrow next" id="nextBtn">›</button>
+        
+        <div class="carrusel-wrapper">
+            <div class="carrusel" id="carrusel">
+                <div class="elemento">
+                    <img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=400&h=300&fit=crop" alt="Producto 1">
+                    <div class="texto-overlay">Producto 1</div>
+                </div>
+                <div class="elemento">
+                    <img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=400&h=300&fit=crop" alt="Producto 2">
+                    <div class="texto-overlay">Producto 2</div>
+                </div>
+                <div class="elemento">
+                    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=400&h=300&fit=crop" alt="Producto 3">
+                    <div class="texto-overlay">Producto 3</div>
+                </div>
+                <div class="elemento">
+                    <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&h=300&fit=crop" alt="Producto 4">
+                    <div class="texto-overlay">Producto 4</div>
+                </div>
+                <div class="elemento">
+                    <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400&h=300&fit=crop" alt="Producto 5">
+                    <div class="texto-overlay">Producto 5</div>
+                </div>
+                <div class="elemento">
+                    <img src="https://images.unsplash.com/photo-1516731566880-7d4aa4a7c6d7?w=400&h=300&fit=crop" alt="Producto 6">
+                    <div class="texto-overlay">Producto 6</div>
+                </div>
+
+            </div>
+        </div>
+
+        <script src="../assets/js/main.js"></script>
+       
 </body>
 </html>
