@@ -14,10 +14,14 @@
 //
 // si necesitas cambiar esto, primero reza, luego haz una copia de seguridad,
 //y por ultimo... SUERTE.
+
 use App\Controllers\PorteController;
 use App\Controllers\TamanoGranoController;
 use App\Controllers\RendimientoController;
 use App\Controllers\GrupoGeneticoController;
+use App\Controllers\VarietyController; // <-- ¡Asegúrate de incluirlo también!
+use Slim\App;
+use Slim\Routing\RouteCollectorProxy;
 
 return function (App $app) {
     $app->group('/api', function (RouteCollectorProxy $group) {
