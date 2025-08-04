@@ -21,7 +21,7 @@ use PDO;
 use PDOException;
 
 class Database {
-    private $host = 'localhost';            // Dirección del host (localhost para Docker con puerto expuesto)
+    private $host = 'localhost';            // Direccion del host (localhost para Docker con puerto expuesto)
     private $port = '3310';                 // Puerto mapeado desde Docker
     private $db_name = 'colombian_coffee';  // Nombre de la base de datos
     private $username = 'root';             // Usuario
@@ -32,7 +32,7 @@ class Database {
         $this->conn = null;
 
         try {
-            // DSN = cadena de conexión para PDO
+            // DSN = cadena de conexion para PDO
             $dsn = "mysql:host={$this->host};port={$this->port};dbname={$this->db_name};charset=utf8mb4";
 
             $this->conn = new PDO($dsn, $this->username, $this->password);
@@ -40,8 +40,8 @@ class Database {
 
             return $this->conn;
         } catch (PDOException $e) {
-            // Muestra mensaje en desarrollo (puedes registrarlo en logs en producción)
-            die("❌ Error de conexión: " . $e->getMessage());
+            // muestra mensaje en desarrollo 
+            die("❌ Error de conexion: " . $e->getMessage());
         }
     }
 }
