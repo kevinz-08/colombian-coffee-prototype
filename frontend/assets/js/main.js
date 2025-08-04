@@ -1,3 +1,11 @@
+//Splash Screen
+
+setTimeout(() => {
+            document.querySelector('.splash-screen').remove();
+        }, 4500);
+
+        
+
 function toggleMenu() {
             const navLinks = document.getElementById('navLinks');
             const menuToggle = document.querySelector('.menu-toggle');

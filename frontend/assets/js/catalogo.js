@@ -1,3 +1,10 @@
+//Splash Screen
+
+setTimeout(() => {
+            document.querySelector('.splash-screen').remove();
+        }, 4500);
+
+
 // HEADER
 
 function toggleMenu() {

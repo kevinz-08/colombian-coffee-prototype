@@ -26,13 +26,55 @@ body{
     overflow-x: hidden;
     margin: 0;
     padding: 0;
-    background: #271716;
+    background: #261716;
     line-height: 1.6;
 }
 
 *,*::after, *::before{
     box-sizing: inherit;
 }
+
+.splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(135deg, #261716 0%, #E0A872 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            animation: fadeOut 0.5s ease-out 2s forwards;
+        }
+
+        .splash-logo {
+            width: 200px;
+            height: 200px;
+            background: url('../Images/logo.png') center/contain no-repeat;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            animation: zoomIn 0.8s ease-out;
+        }
+
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+
 .header {
             color: white;
             display: flex;
@@ -335,98 +377,6 @@ img{
     letter-spacing: 0.5px;
 }
 
-/* Media Queries - CORREGIDOS */
-@media(max-width: 768px) {
-    .granos-cafe{
-        grid-template-columns: 1fr;
-        gap: 2rem; /* REDUCIDO gap */
-    }
-    
-    .grano-cafe{
-        padding: 2rem; /* REDUCIDO padding */
-    }
-    
-    .grano-cafe img{
-        height: 180px; /* REDUCIDO altura en móvil */
-    }
-    
-    .titulo-principal{
-        font-size: 3.5rem;
-    }
-    
-    .botones-filtros button{
-        min-width: 100px;
-        padding: 1rem 1.5rem;
-        font-size: 1.4rem;
-    }
-    
-    .info-basica{
-        justify-content: center;
-    }
-    
-    .caracteristicas{
-        justify-content: center;
-    }
-    
-    .modal-body{
-        padding: 2rem;
-    }
-}
-
-@media(max-width: 480px) {
-    .grano-cafe{
-        padding: 1.5rem; /* REDUCIDO padding */
-    }
-    
-    .grano-cafe img{
-        height: 160px; /* REDUCIDO altura en móviles pequeños */
-    }
-    
-    .titulo-principal{
-        font-size: 3rem;
-    }
-    
-    .subtitulo{
-        font-size: 1.6rem;
-    }
-}
-/* Efectos adicionales */
-.btn-activo {
-    background: linear-gradient(135deg, var(--cafe) 0%, var(--cafe-oscuro) 100%) !important;
-    transform: scale(1.05) !important;
-    box-shadow: 0 6px 20px rgba(111, 78, 55, 0.4) !important;
-}
-
-.fade-out {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.4s ease;
-}
-
-.fade-in {
-    opacity: 1;
-    transform: translateY(0);
-    transition: all 0.4s ease;
-}
-
-/* Estilos específicos para diferentes categorías */
-.grano-cafe[data-tipo="arabica"] .categoria-badge {
-    background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);
-}
-
-.grano-cafe[data-tipo="robusta"] .categoria-badge {
-    background: linear-gradient(135deg, #654321 0%, #8B4513 100%);
-}
-
-.grano-cafe[data-tipo="especialidad"] .categoria-badge {
-    background: linear-gradient(135deg, #DAA520 0%, #B8860B 100%);
-}
-
-.grano-cafe[data-tipo="regional"] .categoria-badge {
-    background: linear-gradient(135deg, #228B22 0%, #2E8B57 100%);
-}
-
-
 /* CONTACT */
 .contact-section {
             background: linear-gradient(135deg, #d2691e81, #ff8c006e);
@@ -521,11 +471,15 @@ img{
         }
 
 
+/* Media Queries - CORREGIDOS */
 @media screen and (max-width: 768px) {
-
     .header {
             padding: 2vw 5%;
             flex-wrap: nowrap;
+    }
+    .header .name img {
+        width: 50px;
+        margin: 0 0 0 0;
     }
         .menu-toggle {
             display: block;
@@ -565,5 +519,92 @@ img{
             padding: 1rem;
             border-radius: 5px;
     }
-
+    .granos-cafe{
+        grid-template-columns: 1fr;
+        gap: 2rem; /* REDUCIDO gap */
+    }
+    
+    .grano-cafe{
+        padding: 2rem; /* REDUCIDO padding */
+    }
+    
+    .grano-cafe img{
+        height: 180px; /* REDUCIDO altura en móvil */
+    }
+    
+    .titulo-principal{
+        font-size: 3.5rem;
+    }
+    
+    .botones-filtros button{
+        min-width: 100px;
+        padding: 1rem 1.5rem;
+        font-size: 1.4rem;
+    }
+    
+    .info-basica{
+        justify-content: center;
+    }
+    
+    .caracteristicas{
+        justify-content: center;
+    }
+    
+    .modal-body{
+        padding: 2rem;
+    }
 }
+
+@media(max-width: 480px) {
+    .grano-cafe{
+        padding: 1.5rem; /* REDUCIDO padding */
+    }
+    
+    .grano-cafe img{
+        height: 160px; /* REDUCIDO altura en móviles pequeños */
+    }
+    
+    .titulo-principal{
+        font-size: 3rem;
+    }
+    
+    .subtitulo{
+        font-size: 1.6rem;
+    }
+}
+/* Efectos adicionales */
+.btn-activo {
+    background: linear-gradient(135deg, var(--cafe) 0%, var(--cafe-oscuro) 100%) !important;
+    transform: scale(1.05) !important;
+    box-shadow: 0 6px 20px rgba(111, 78, 55, 0.4) !important;
+}
+
+.fade-out {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.4s ease;
+}
+
+.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.4s ease;
+}
+
+/* Estilos específicos para diferentes categorías */
+.grano-cafe[data-tipo="arabica"] .categoria-badge {
+    background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);
+}
+
+.grano-cafe[data-tipo="robusta"] .categoria-badge {
+    background: linear-gradient(135deg, #654321 0%, #8B4513 100%);
+}
+
+.grano-cafe[data-tipo="especialidad"] .categoria-badge {
+    background: linear-gradient(135deg, #DAA520 0%, #B8860B 100%);
+}
+
+.grano-cafe[data-tipo="regional"] .categoria-badge {
+    background: linear-gradient(135deg, #228B22 0%, #2E8B57 100%);
+}
+
