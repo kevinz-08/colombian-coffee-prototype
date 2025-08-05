@@ -21,11 +21,11 @@ use PDO;
 use PDOException;
 
 class Database {
-    private $host = 'localhost';            // Direccion del host (localhost para Docker con puerto expuesto)
-    private $port = '3310';                 // Puerto mapeado desde Docker
+    private $host = 'db';            // Direccion del host (localhost para Docker con puerto expuesto)
+    private $port = '3306';                 // Puerto mapeado desde Docker
     private $db_name = 'colombian_coffee';  // Nombre de la base de datos
     private $username = 'root';             // Usuario
-    private $password = 'cafe123';          // Contraseña
+    private $password = 'admin';          // Contraseña
     private $conn;
 
     public function connect() {

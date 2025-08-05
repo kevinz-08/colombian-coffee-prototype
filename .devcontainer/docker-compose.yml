@@ -17,3 +17,10 @@ services:
       MYSQL_DATABASE: colombian_coffee
 volumes:
   mysql-pdo-data:
+
+  networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  mysql-pdo-data:
