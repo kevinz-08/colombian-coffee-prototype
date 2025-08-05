@@ -86,6 +86,9 @@ CREATE TABLE imagenes_variedad (
     FOREIGN KEY (id_variedad) REFERENCES variedades(id) ON DELETE CASCADE
 );
 
+ALTER TABLE imagenes_variedad
+MODIFY url_imagen TEXT;
+
 
 SHOW TABLES;
 
