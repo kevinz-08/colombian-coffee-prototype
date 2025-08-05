@@ -21,8 +21,8 @@
 		}
 	},
 	"forwardPorts": [
-		8080,
-		3306
+		8081,
+		3307
 	],
 	"features": {
 		"ghcr.io/devcontainers/features/github-cli:1": {},

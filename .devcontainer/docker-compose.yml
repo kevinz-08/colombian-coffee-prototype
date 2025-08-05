@@ -7,6 +7,7 @@ services:
       - ../..:/workspaces:cached
     command: sleep infinity
     network_mode: service:db
+
   db:
     image: mysql:8.4.3
     restart: unless-stopped
@@ -15,12 +16,10 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: admin
       MYSQL_DATABASE: colombian_coffee
+
 volumes:
   mysql-pdo-data:
 
-  networks:
+networks:
   app-network:
     driver: bridge
-
-volumes:
-  mysql-pdo-data:
