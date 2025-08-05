@@ -5,19 +5,41 @@ use App\Config\Database;
 use App\Auth\Auth;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $correo = $_POST['email'];
-    $contrasena = $_POST['password'];
+    // Muestra lo que está llegando por POST
+    echo "<pre>";
+    print_r($_POST);
+    echo "</pre>";
+
+    $correo = $_POST['email'] ?? null;
+    $contrasena = $_POST['password'] ?? null;
+
+    if (!$correo || !$contrasena) {
+        echo "Faltan campos.";
+        exit;
+    }
 
     $conn = (new Database())->connect();
     $stmt = $conn->prepare("SELECT * FROM usuarios WHERE correo = ?");
     $stmt->execute([$correo]);
     $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if ($usuario && password_verify($contrasena, $usuario['contrasena'])) {
-        Auth::login($usuario); // Este método deberías tenerlo en una clase Auth para iniciar sesión
-        header('Location: /public/admin/dashboard.php');
+    if (!$usuario) {
+        echo "Usuario no encontrado en la base de datos.";
         exit;
+    }
+
+    echo "<p>Usuario encontrado: " . htmlspecialchars($usuario['nombre']) . "</p>";
+
+    // Mostrar la contraseña recibida y la de la BD
+    echo "<p>Contraseña escrita: " . htmlspecialchars($contrasena) . "</p>";
+    echo "<p>Hash en la BD: " . htmlspecialchars($usuario['contrasena']) . "</p>";
+
+    if (password_verify($contrasena, $usuario['contrasena'])) {
+        echo "¡Login exitoso!";
+        // Auth::login($usuario);
+        // header('Location: /frontend/admin/variedades/index.php');
+        // exit;
     } else {
-        echo "Credenciales inválidas";
+        echo "Contraseña incorrecta.";
     }
 }
