@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     $conn = (new Database())->connect();
-    $stmt = $conn->prepare("SELECT * FROM usuarios WHERE correo = ?");
+    $stmt = $conn->prepare("SELECT * FROM usuarios WHERE email = ?");
     $stmt->execute([$correo]);
     $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -28,13 +28,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    echo "<p>Usuario encontrado: " . htmlspecialchars($usuario['nombre']) . "</p>";
+    echo "<p>Usuario encontrado: " . htmlspecialchars($usuario['name']) . "</p>";
 
     // Mostrar la contraseña recibida y la de la BD
     echo "<p>Contraseña escrita: " . htmlspecialchars($contrasena) . "</p>";
-    echo "<p>Hash en la BD: " . htmlspecialchars($usuario['contrasena']) . "</p>";
+    echo "<p>Hash en la BD: " . htmlspecialchars($usuario['password']) . "</p>";
 
-    if (password_verify($contrasena, $usuario['contrasena'])) {
+    if (password_verify($contrasena, $usuario['password'])) {
         echo "¡Login exitoso!";
         // Auth::login($usuario);
         // header('Location: /frontend/admin/variedades/index.php');

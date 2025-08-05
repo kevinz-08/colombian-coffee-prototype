@@ -1,3 +1,4 @@
+-- Active: 1754433512160@@127.0.0.1@3306
 CREATE DATABASE IF NOT EXISTS colombian_coffee;
 USE colombian_coffee;
 
