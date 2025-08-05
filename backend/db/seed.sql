@@ -79,3 +79,44 @@ INSERT INTO imagenes_variedad (id_variedad, url_imagen) VALUES
 (8, 'https://upload.wikimedia.org/wikipedia/commons/f/f6/Cafe_typica.jpg'),
 (9, 'https://upload.wikimedia.org/wikipedia/commons/a/ad/Geisha_coffee.jpg'),
 (10, 'https://upload.wikimedia.org/wikipedia/commons/1/1b/Cafe_maragogipe.jpg');
+
+UPDATE imagenes_variedad
+SET url_imagen = 'https://cafesmyway.com/wp-content/uploads/2024/05/planta-cafe-castillo.webp'
+WHERE id_variedad = 1;
+
+UPDATE imagenes_variedad
+SET url_imagen = 'https://images.squarespace-cdn.com/content/v1/649caa0baa505675127f08a3/54aad53a-9850-4cb2-9d6a-3c0840404af0/59b70bee-f08f-40f0-9074-1b696d001b42.JPG?format=1000w'
+WHERE id_variedad = 2;
+
+UPDATE imagenes_variedad
+SET url_imagen = 'https://blog.aegro.com.br/wp-content/uploads/2019/12/4-adubacao-para-cafe.jpg'
+WHERE id_variedad = 3;
+
+UPDATE imagenes_variedad
+SET url_imagen = 'https://3blaws.s3.amazonaws.com/styles/carousel_2x/s3/images/cafe2179.jpg'
+WHERE id_variedad = 4;
+
+UPDATE imagenes_variedad
+SET url_imagen = 'https://img.grouponcdn.com/deal/DainqEPQej311K66xDkddNFEYPL/Da-1000x600/v1/c870x524.jpg'
+WHERE id_variedad = 5;
+
+UPDATE imagenes_variedad
+SET url_imagen = 'https://cafe3b.publimad.com/wp-content/uploads/2023/11/CA3-682x1024.png'
+WHERE id_variedad = 6;
+
+UPDATE imagenes_variedad
+SET url_imagen = 'https://perunor.com/wp-content/uploads/2018/03/CAFE-CATURRA.jpg'
+WHERE id_variedad = 7;
+
+UPDATE imagenes_variedad
+SET url_imagen = 'https://tse2.mm.bing.net/th/id/OIP._716kxl6dRvQ5-jMhMpTrwHaGA?rs=1&pid=ImgDetMain&o=7&rm=3'
+WHERE id_variedad = 8;
+
+UPDATE imagenes_variedad
+SET url_imagen = 'https://b2bmarketplace.procolombia.co/sites/default/files/styles/slider_image_product/public/images_products/exotic_geisha_0.jpg'
+WHERE id_variedad = 9;
+
+UPDATE imagenes_variedad
+SET url_imagen = 'https://brasil.perfil.com/wp-content/uploads/2023/05/cafe.jpg'
+WHERE id_variedad = 10;
+
