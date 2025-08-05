@@ -84,7 +84,7 @@ INSERT INTO usuarios (nombre, correo, contrasena) VALUES (
     'Admin',
     'admin@cafecolombia.com',
     -- contrasena: admin123
-    '$2y$10$MbzCmWm7uNtxdpU7vWCIr.SzNnR.zX6olSh9rWDD6qFOYQOpU1VgC'
+    '$2y$10$jq1V2PfMXVO3ZYaz/yPW/uqKTJepuN6pXruMGrI.DYxTJG3X5Aa2W'
 );
 UPDATE imagenes_variedad
 SET url_imagen = 'https://cafesmyway.com/wp-content/uploads/2024/05/planta-cafe-castillo.webp'

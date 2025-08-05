@@ -17,6 +17,7 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 
+
 use Slim\Factory\AppFactory;
 use Slim\Exception\HttpNotFoundException;
 use Slim\Routing\RouteCollectorProxy;
@@ -39,6 +40,6 @@ $app->add(function (Request $request, RequestHandlerInterface $handler): Respons
 });
 
 // ✅ Cargar rutas
-(require __DIR__ . '/../routes/api.php')($app);
+(require __DIR__ . '/../src/routes/api.php')($app);
 
 $app->run();
