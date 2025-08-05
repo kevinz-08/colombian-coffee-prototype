@@ -80,6 +80,12 @@ INSERT INTO imagenes_variedad (id_variedad, url_imagen) VALUES
 (9, 'https://upload.wikimedia.org/wikipedia/commons/a/ad/Geisha_coffee.jpg'),
 (10, 'https://upload.wikimedia.org/wikipedia/commons/1/1b/Cafe_maragogipe.jpg');
 
+INSERT INTO usuarios (name, email, password) VALUES (
+    'Admin',
+    'admin@cafecolombia.com',
+    -- contrasena: admin123
+    '$2y$10$jq1V2PfMXVO3ZYaz/yPW/uqKTJepuN6pXruMGrI.DYxTJG3X5Aa2W'
+);
 UPDATE imagenes_variedad
 SET url_imagen = 'https://cafesmyway.com/wp-content/uploads/2024/05/planta-cafe-castillo.webp'
 WHERE id_variedad = 1;
