@@ -1,3 +1,43 @@
+//Splash Screen
+
+setTimeout(() => {
+            document.querySelector('.splash-screen').remove();
+        }, 4500);
+
+
+// HEADER
+
+function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            const menuToggle = document.querySelector('.menu-toggle');
+            
+            navLinks.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        }
+
+        // Cerrar menú al hacer click en un enlace (móvil)
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                const navLinks = document.getElementById('navLinks');
+                const menuToggle = document.querySelector('.menu-toggle');
+                
+                navLinks.classList.remove('active');
+                menuToggle.classList.remove('active');
+            });
+        });
+
+        // Cerrar menú al redimensionar ventana
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                const navLinks = document.getElementById('navLinks');
+                const menuToggle = document.querySelector('.menu-toggle');
+                
+                navLinks.classList.remove('active');
+                menuToggle.classList.remove('active');
+            }
+        });
+
+
 // Variables globales
 const imagenes = document.querySelectorAll('img');
 const btnTodos = document.querySelector('.todos');
@@ -11,52 +51,6 @@ const contenedorGranos = document.querySelector('.granos-cafe');
 const modal = document.getElementById('modal-info');
 const modalContenido = document.querySelector('.modal-contenido');
 const btnCerrarModal = document.querySelector('.btn-cerrar');
-
-// Base de datos de información detallada de cada grano
-const informacionDetallada = {
-    'Coffea Typica': {
-        historia: 'La variedad Typica es considerada la variedad madre de muchos cafés arábica actuales. Originaria de Etiopía, fue la primera en ser cultivada comercialmente en Yemen y posteriormente llevada a Java por los holandeses en el siglo XVII. En Colombia, se cultiva principalmente en Nariño y la Sierra Nevada.',
-        cultivo: 'Requiere altitudes entre 1400-2000 metros, temperaturas entre 15-24°C y precipitaciones de 1500-2000mm anuales. Es susceptible a la roya del café pero produce granos de excelente calidad. Prefiere suelos volcánicos y climas frescos de montaña.',
-        procesamiento: 'Se procesa principalmente por método lavado para resaltar su acidez natural. El secado debe ser lento y controlado para preservar sus características delicadas. La fermentación controlada realza sus notas florales.',
-        perfil: 'Sabor suave y delicado con acidez brillante. Notas florales distintivas con toques a azúcar morena. Aroma floral con toques herbales. Cuerpo ligero pero bien estructurado.',
-        maridaje: 'Excelente para preparaciones de filtro como V60 o Chemex. Ideal para el desayuno acompañado de pasteles suaves o frutas. Se aprecia mejor sin azúcar para resaltar su delicadeza natural.'
-    },
-    'Coffea Caturra': {
-        historia: 'Mutación enana de Bourbon descubierta en Brasil en 1937. Se popularizó rápidamente en Colombia, especialmente en Antioquia, Caldas y Nariño, por su facilidad de cultivo y alta productividad. Es una de las variedades más cultivadas en el país.',
-        cultivo: 'Adaptable a diferentes altitudes (1300-1800m). Su tamaño compacto facilita la cosecha y permite mayor densidad de siembra. Resistente a vientos fuertes y con buena productividad. Requiere cuidados regulares para mantener calidad.',
-        procesamiento: 'Versátil en procesamiento. El método lavado resalta su acidez equilibrada, mientras que el natural desarrolla mayor dulzura. Responde bien al procesamiento honey que equilibra acidez y dulzura.',
-        perfil: 'Sabor balanceado característico con notas frutales y chocolate. Acidez media bien integrada. Taza limpia con final persistente. Cuerpo medio que permite versatilidad en preparación.',
-        maridaje: 'Versátil para diferentes métodos de preparación. Excelente para espresso y métodos de filtro. Combina bien con chocolate, frutas rojas y postres moderadamente dulces.'
-    },
-    'Coffea Bourbon': {
-        historia: 'Mutación natural de Typica descubierta en la isla Bourbon (ahora Reunión) en el siglo XVIII. Los franceses la desarrollaron y se extendió por América Latina. En Colombia se cultiva principalmente en Huila y Tolima, regiones reconocidas por su calidad excepcional.',
-        cultivo: 'Prefiere altitudes de 1400-2000 metros. Más productiva que Typica pero igualmente susceptible a enfermedades. Requiere suelos volcánicos ricos en minerales y condiciones climáticas estables con diferencias marcadas de temperatura día/noche.',
-        procesamiento: 'Responde bien tanto al procesamiento lavado como al natural. El procesamiento honey resalta especialmente sus notas dulces. Requiere fermentación controlada para desarrollar su perfil complejo.',
-        perfil: 'Sabor dulce con cuerpo redondo y sedoso. Notas distintivas a frutas rojas, vainilla y toques florales. Acidez alta pero bien equilibrada. Mayor complejidad aromática que otras variedades tradicionales.',
-        maridaje: 'Perfecto para espresso y cappuccino. Combina excelentemente con postres de frutas rojas, chocolate blanco y preparaciones con vainilla. Ideal para métodos de preparación que resalten su dulzura natural.'
-    },
-    'Coffea Tabi': {
-        historia: 'Variedad desarrollada por Cenicafé (Centro Nacional de Investigaciones de Café de Colombia) como resultado del cruce genético entre Typica, Bourbon y Timor. Creada específicamente para combinar resistencia a enfermedades con calidad excepcional de taza.',
-        cultivo: 'Se cultiva principalmente en Santander y Tolima entre 1300-1800 metros. Presenta buena resistencia a la roya del café y otras enfermedades comunes. Requiere manejo técnico especializado para expresar su potencial de calidad.',
-        procesamiento: 'Responde excelentemente a diferentes métodos de procesamiento. El lavado resalta su equilibrio, mientras que procesos experimentales como honey y natural desarrollan su complejidad frutal y dulce.',
-        perfil: 'Excelente equilibrio entre acidez y dulzura. Notas dulces prominentes con matices frutales y toques florales delicados. Hereda la complejidad de sus variedades parentales con resistencia mejorada.',
-        maridaje: 'Versátil para múltiples preparaciones. Excelente en espresso por su equilibrio, también destaca en métodos de filtro. Combina bien con postres frutales y chocolate semi-amargo.'
-    },
-    'Coffea Maragogipe': {
-        historia: 'Conocido como "grano elefante" por su tamaño excepcional, es una mutación natural de Typica descubierta en Brasil en 1870. Se caracteriza por producir los granos de café más grandes del mundo, llegando a ser hasta tres veces más grandes que un grano normal.',
-        cultivo: 'Se cultiva en Antioquia y Quindío entre 1200-1600 metros. Requiere condiciones muy específicas y tiene baja productividad. Los árboles son más grandes que otras variedades y requieren más espacio entre plantas.',
-        procesamiento: 'Su gran tamaño requiere técnicas especiales de procesamiento. El secado debe ser más prolongado y cuidadoso. El tostado requiere ajustes específicos debido al tamaño del grano para lograr uniformidad.',
-        perfil: 'Sabor suave y menos intenso que otras variedades. Notas herbales y florales delicadas. Acidez baja y cuerpo ligero. Su perfil es más sutil y requiere una apreciación refinada.',
-        maridaje: 'Ideal para preparaciones suaves como pour-over o prensa francesa. Se aprecia mejor en preparaciones que resalten su delicadeza. Combina con postres ligeros y té de hierbas.'
-    },
-    'Coffea Pacamara': { // NUEVO: Información para Pacamara
-        historia: 'Híbrido creado en El Salvador en 1958 mediante el cruce entre Pacas (mutación de Bourbon) y Maragogipe. Esta variedad combina el cuerpo robusto del Pacas con el tamaño de grano grande del Maragogipe. En Colombia se ha adaptado bien a las condiciones de Valle del Cauca y Nariño.',
-        cultivo: 'Se cultiva entre 1300-1800 metros de altitud. Requiere condiciones climáticas específicas con temperaturas moderadas y buena precipitación. Los árboles son de porte alto y requieren manejo cuidadoso. Productividad media pero calidad excepcional.',
-        procesamiento: 'Responde excelentemente a diferentes métodos de procesamiento. El método lavado resalta su acidez compleja, mientras que el procesamiento natural desarrolla su dulzura frutal. Los procesos honey potencian su cremosidad característica.',
-        perfil: 'Perfil extraordinariamente complejo con notas afrutadas intensas, cuerpo cremoso y bien estructurado. Presenta notas a chocolate, especias dulces y frutas tropicales. Acidez media-alta bien balanceada con dulzura prominente.',
-        maridaje: 'Excelente para espresso por su cuerpo cremoso. También destaca en métodos de filtro que resalten su complejidad. Combina perfectamente con chocolate semi-amargo, postres con especias y frutas exóticas. Ideal para catas especializadas.'
-    }
-};
 
 // Inicialización cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', () => {
@@ -451,3 +445,19 @@ if ('ontouchstart' in window) {
         });
     });
 }
+
+// CONTACT //
+
+       document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const btn = document.querySelector('.submit-btn');
+            btn.style.background = '#27ae60';
+            btn.textContent = '¡Enviado!';
+            
+            setTimeout(() => {
+                btn.style.background = '#3498db';
+                btn.textContent = 'Enviar Mensaje';
+                this.reset();
+            }, 2000);
+        });

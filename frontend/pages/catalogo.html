@@ -8,8 +8,30 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+    <div class="splash-screen">
+        <div class="splash-logo"></div>
+    </div>
+    <header class="header">
+        <div class="name">
+            <h1>Colombian Coffee</h1>
+        </div>
+        
+        <button class="menu-toggle" onclick="toggleMenu()">
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </button>
+        
+        <nav class="nav-links" id="navLinks">
+            <li><a href="../pages/index.html">Start</a></li>
+            <li><a href="../pages/catalogo.html">Products</a></li>
+            <li><a href="../pages/login.html">Sing In</a></li>
+        </nav>
+    </header>
     <section class="catalogo contenedor">
-        <h1 class="titulo-principal">☕ Enciclopedia de Granos de Café</h1>
+        <h1 class="titulo-principal">☕ Catalogo de granos de cafe</h1>
         <p class="subtitulo">Descubre los diferentes tipos de granos de café y sus características únicas</p>
         
         <div class="botones-filtros">
@@ -37,7 +59,6 @@
                     <span class="acidez">Acidez: Alta</span>
                     <span class="cuerpo">Cuerpo: Ligero</span>
                 </div>
-                <button class="btn-leer-mas"><i class="fas fa-book-open"></i> Leer más</button>
             </div>
 
             <div class="grano-cafe" data-tipo="caturra">
@@ -53,7 +74,6 @@
                     <span class="acidez">Acidez: Media</span>
                     <span class="cuerpo">Cuerpo: Medio</span>
                 </div>
-                <button class="btn-leer-mas"><i class="fas fa-book-open"></i> Leer más</button>
             </div>
 
             <div class="grano-cafe" data-tipo="bourbon">
@@ -69,7 +89,6 @@
                     <span class="acidez">Acidez: Alta</span>
                     <span class="cuerpo">Cuerpo: Medio</span>
                 </div>
-                <button class="btn-leer-mas"><i class="fas fa-book-open"></i> Leer más</button>
             </div>
 
             <div class="grano-cafe" data-tipo="tabi">
@@ -85,7 +104,6 @@
                     <span class="acidez">Acidez: Media</span>
                     <span class="cuerpo">Cuerpo: Medio</span>
                 </div>
-                <button class="btn-leer-mas"><i class="fas fa-book-open"></i> Leer más</button>
             </div>
 
             <div class="grano-cafe" data-tipo="maragogipe">
@@ -101,7 +119,6 @@
                     <span class="acidez">Acidez: Baja</span>
                     <span class="cuerpo">Cuerpo: Ligero</span>
                 </div>
-                <button class="btn-leer-mas"><i class="fas fa-book-open"></i> Leer más</button>
             </div>
 
             <div class="grano-cafe" data-tipo="Pacamara">
@@ -117,7 +134,6 @@
                     <span class="acidez">Acidez: Media-Alta</span>
                     <span class="cuerpo">Cuerpo: Fuerte</span>
                 </div>
-                <button class="btn-leer-mas"><i class="fas fa-book-open"></i> Leer más</button>
             </div>
         </div>
     </section>
@@ -129,6 +145,34 @@
             
         </div>
     </div>
+    <!-- Sección de Contacto -->
+    <section class="contact-section">
+        <div class="contact-container">
+            <h2>Contáctanos</h2>
+            
+            <div class="info">
+                <div>📧 Colombian-coffee@empresa.com</div>
+                <div>📱 +57 300 123 4567</div>
+                <div>📍 Bucaramanga, Colombia</div>
+            </div>
+
+            <form id="form">
+                <div class="form-group">
+                    <input type="text" id="nombre" placeholder="Tu nombre" required>
+                    <div class="error-msg">Escribe tu nombre</div>
+                </div>
+
+                <div class="form-group">
+                    <input type="email" id="email" placeholder="Tu email" required>
+                    <div class="error-msg">Email no válido</div>
+                </div>
+
+                <div class="form-group">
+                    <textarea id="mensaje" rows="4" placeholder="Tu mensaje" required></textarea>
+                    <div class="error-msg">Escribe un mensaje</div>
+                </div>
+
+                <button type="submit" class="btn-enviar">Enviar</button>
 
     <script src="../assets/js/catalogo.js"></script>
 </body>
