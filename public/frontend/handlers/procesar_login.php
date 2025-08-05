@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../../vendor/autoload.php';
+require_once __DIR__ . '/../../../vendor/autoload.php';
 
 use App\Config\Database;
 use App\Auth\Auth;
@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Muestra lo que está llegando por POST
     echo "<pre>";
     print_r($_POST);
-    echo "</pre>";require __DIR__ . '/../vendor/autoload.php';
+    echo "</pre>";require_once __DIR__ . '/../../../vendor/autoload.php';
 
     $correo = $_POST['email'] ?? null;
     $contrasena = $_POST['password'] ?? null;

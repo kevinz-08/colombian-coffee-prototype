@@ -80,7 +80,7 @@ INSERT INTO imagenes_variedad (id_variedad, url_imagen) VALUES
 (9, 'https://upload.wikimedia.org/wikipedia/commons/a/ad/Geisha_coffee.jpg'),
 (10, 'https://upload.wikimedia.org/wikipedia/commons/1/1b/Cafe_maragogipe.jpg');
 
-INSERT INTO usuarios (nombre, correo, contrasena) VALUES (
+INSERT INTO usuarios (name, email, password) VALUES (
     'Admin',
     'admin@cafecolombia.com',
     -- contrasena: admin123
