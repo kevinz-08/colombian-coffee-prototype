@@ -8,12 +8,12 @@
 <body>
         <div class="container">
         <div class="header">
-            <h1>☕ Cafés de Colombia</h1>
+            <h1>☕ Colombian Coffee</h1>
             <p>Dashboard de Gestión de Variedades de Café</p>
         </div>
 
         <div class="dashboard-content">
-            <!-- Estadísticas -->
+
             <div class="stats-grid">
                 <div class="stat-card">
                     <div class="stat-number" id="totalCoffees">0</div>
@@ -29,11 +29,11 @@
                 </div>
             </div>
 
-            <!-- Sección de Acciones -->
             <div class="actions-section">
                 <h2 class="section-title">Gestión de Cafés</h2>
                 <div class="actions-grid">
-                    <!-- Agregar Café -->
+
+
                     <div class="action-card">
                         <h3 style="margin-bottom: 20px; color: #2C1810;">+ Agregar Nuevo Café</h3>
                         <div class="form-group">
@@ -44,13 +44,14 @@
                             <label for="coffeeRegion">Región</label>
                             <select id="coffeeRegion">
                                 <option value="">Seleccionar región</option>
-                                <option value="Huila">Huila</option>
-                                <option value="Nariño">Nariño</option>
-                                <option value="Cauca">Cauca</option>
+                                <option value="Antioquia">Antioquia</option>
                                 <option value="Tolima">Tolima</option>
-                                <option value="Quindío">Quindío</option>
+                                <option value="Nariño">Nariño</option>
+                                <option value="Cauca">Valle Del Cauca</option>
                                 <option value="Caldas">Caldas</option>
-                                <option value="Risaralda">Risaralda</option>
+                                <option value="Huila">Huila</option>
+                                <option value="Quindío">Quindío</option>
+                                <option value="Nevada">Sierra Nevada</option>
                                 <option value="Santander">Santander</option>
                             </select>
                         </div>
@@ -58,13 +59,14 @@
                             <label for="coffeeRegion">Región</label>
                             <select id="coffeeRegion">
                                 <option value="">Seleccionar región</option>
-                                <option value="Huila">Huila</option>
-                                <option value="Nariño">Nariño</option>
-                                <option value="Cauca">Cauca</option>
+                                <option value="Antioquia">Antioquia</option>
                                 <option value="Tolima">Tolima</option>
-                                <option value="Quindío">Quindío</option>
+                                <option value="Nariño">Nariño</option>
+                                <option value="Cauca">Valle Del Cauca</option>
                                 <option value="Caldas">Caldas</option>
-                                <option value="Risaralda">Risaralda</option>
+                                <option value="Huila">Huila</option>
+                                <option value="Quindío">Quindío</option>
+                                <option value="Nevada">Sierra Nevada</option>
                                 <option value="Santander">Santander</option>
                             </select>
                         </div>
@@ -76,7 +78,6 @@
                         <button class="btn" onclick="addCoffee()">Agregar Café</button>
                     </div>
 
-                    <!-- Buscar y Filtrar -->
                     <div class="action-card">
                         <h3 style="margin-bottom: 20px; color: #2C1810;">🔍 Buscar Cafés</h3>
                         <div class="form-group">
@@ -86,14 +87,14 @@
                         <div class="form-group">
                             <label for="filterRegion">Filtrar por región</label>
                             <select id="filterRegion" onchange="filterCoffees()">
-                                <option value="">Todas las regiones</option>
-                                <option value="Huila">Huila</option>
-                                <option value="Nariño">Nariño</option>
-                                <option value="Cauca">Cauca</option>
+                                <option value="Antioquia">Antioquia</option>
                                 <option value="Tolima">Tolima</option>
-                                <option value="Quindío">Quindío</option>
+                                <option value="Nariño">Nariño</option>
+                                <option value="Cauca">Valle Del Cauca</option>
                                 <option value="Caldas">Caldas</option>
-                                <option value="Risaralda">Risaralda</option>
+                                <option value="Huila">Huila</option>
+                                <option value="Quindío">Quindío</option>
+                                <option value="Nevada">Sierra Nevada</option>
                                 <option value="Santander">Santander</option>
                             </select>
                         </div>
@@ -102,17 +103,14 @@
                 </div>
             </div>
 
-            <!-- Lista de Cafés -->
             <div class="actions-section">
                 <h2 class="section-title">Lista de Cafés Registrados</h2>
                 <div id="coffeeList" class="coffee-list">
-                    <!-- Los cafés se mostrarán aquí dinámicamente -->
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Modal para Editar -->
     <div id="editModal" class="modal">
         <div class="modal-content">
             <h3 style="margin-bottom: 20px; color: #2C1810;">✏️ Editar Café</h3>
@@ -123,13 +121,14 @@
             <div class="form-group">
                 <label for="editRegion">Región</label>
                 <select id="editRegion">
-                    <option value="Huila">Huila</option>
-                    <option value="Nariño">Nariño</option>
-                    <option value="Cauca">Cauca</option>
+                    <option value="Antioquia">Antioquia</option>
                     <option value="Tolima">Tolima</option>
-                    <option value="Quindío">Quindío</option>
+                    <option value="Nariño">Nariño</option>
+                    <option value="Cauca">Valle Del Cauca</option>
                     <option value="Caldas">Caldas</option>
-                    <option value="Risaralda">Risaralda</option>
+                    <option value="Huila">Huila</option>
+                    <option value="Quindío">Quindío</option>
+                    <option value="Nevada">Sierra Nevada</option>
                     <option value="Santander">Santander</option>
                 </select>
             </div>
