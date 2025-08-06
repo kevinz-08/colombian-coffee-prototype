@@ -461,3 +461,31 @@ if ('ontouchstart' in window) {
                 this.reset();
             }, 2000);
         });
+
+// Vamos a consumir la api
+fetch('http://localhost:8000/api/variedades')
+  .then(res => res.json())
+  .then(data => {
+    const contenedor = document.getElementById('contenedor-variedades');
+
+    data.forEach(variedad => {
+      const card = document.createElement('div');
+      card.classList.add('grano-cafe');
+      card.innerHTML = `
+        <div class="categoria-badge">${variedad.nombre_comun}</div>
+        <img src="RUTA/POR/DEFINIR.jpg" alt="${variedad.nombre_comun}" class="img-placeholder">
+        <h2>${variedad.nombre_cientifico}</h2>
+        <div class="info-basica">
+          <span class="origen"><i class="fas fa-map-marker-alt"></i> Origen por definir</span>
+          <span class="altitud"><i class="fas fa-mountain"></i> ${variedad.altitud_min}-${variedad.altitud_max}m</span>
+        </div>
+        <p class="descripcion">${variedad.descripcion}</p>
+        <div class="caracteristicas">
+          <span class="acidez">Acidez: por definir</span>
+          <span class="cuerpo">Cuerpo: por definir</span>
+        </div>
+      `;
+      contenedor.appendChild(card);
+    });
+  })
+  .catch(err => console.error('Error al obtener variedades:', err));
