@@ -1,4 +1,7 @@
- var coffees = [];
+
+
+
+var coffees = [];
         var editingIndex = -1;
 
         var sampleCoffees = [
