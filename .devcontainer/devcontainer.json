@@ -20,12 +20,10 @@
 			]
 		}
 	},
-	"forwardPorts": [
-		8080,
-		3306
-	],
+	"forwardPorts": [8080, 3306],
 	"features": {
 		"ghcr.io/devcontainers/features/github-cli:1": {},
 		"ghcr.io/devcontainers-extra/features/composer:1": {}
-	}
+	},
+	"postStartCommand": "php -S 0.0.0.0:8080 -t public"
 }
