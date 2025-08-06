@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+</head>
+<body>
+        <div class="container">
+        <div class="header">
+            <h1>☕ Cafés de Colombia</h1>
+            <p>Dashboard de Gestión de Variedades de Café</p>
+        </div>
+
+        <div class="dashboard-content">
+            <!-- Estadísticas -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number" id="totalCoffees">0</div>
+                    <div class="stat-label">Total de Cafés</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="totalRegions">0</div>
+                    <div class="stat-label">Regiones</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="averageAltitude">0</div>
+                    <div class="stat-label">Altitud Promedio</div>
+                </div>
+            </div>
+
+            <!-- Sección de Acciones -->
+            <div class="actions-section">
+                <h2 class="section-title">Gestión de Cafés</h2>
+                <div class="actions-grid">
+                    <!-- Agregar Café -->
+                    <div class="action-card">
+                        <h3 style="margin-bottom: 20px; color: #2C1810;">+ Agregar Nuevo Café</h3>
+                        <div class="form-group">
+                            <label for="coffeName">Nombre del Café</label>
+                            <input type="text" id="coffeName" placeholder="Ej: Café Huila Supremo">
+                        </div>
+                        <div class="form-group">
+                            <label for="coffeeRegion">Región</label>
+                            <select id="coffeeRegion">
+                                <option value="">Seleccionar región</option>
+                                <option value="Huila">Huila</option>
+                                <option value="Nariño">Nariño</option>
+                                <option value="Cauca">Cauca</option>
+                                <option value="Tolima">Tolima</option>
+                                <option value="Quindío">Quindío</option>
+                                <option value="Caldas">Caldas</option>
+                                <option value="Risaralda">Risaralda</option>
+                                <option value="Santander">Santander</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="coffeeRegion">Región</label>
+                            <select id="coffeeRegion">
+                                <option value="">Seleccionar región</option>
+                                <option value="Huila">Huila</option>
+                                <option value="Nariño">Nariño</option>
+                                <option value="Cauca">Cauca</option>
+                                <option value="Tolima">Tolima</option>
+                                <option value="Quindío">Quindío</option>
+                                <option value="Caldas">Caldas</option>
+                                <option value="Risaralda">Risaralda</option>
+                                <option value="Santander">Santander</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="coffeeDescription">Descripción</label>
+                            <textarea id="coffeeDescription" rows="3" placeholder="Describe las características del café..."></textarea>
+                        </div>
+                        <button class="btn" onclick="addCoffee()">Agregar Café</button>
+                    </div>
+
+                    <!-- Buscar y Filtrar -->
+                    <div class="action-card">
+                        <h3 style="margin-bottom: 20px; color: #2C1810;">🔍 Buscar Cafés</h3>
+                        <div class="form-group">
+                            <label for="searchInput">Buscar por nombre</label>
+                            <input type="text" id="searchInput" placeholder="Buscar café..." oninput="searchCoffees()">
+                        </div>
+                        <div class="form-group">
+                            <label for="filterRegion">Filtrar por región</label>
+                            <select id="filterRegion" onchange="filterCoffees()">
+                                <option value="">Todas las regiones</option>
+                                <option value="Huila">Huila</option>
+                                <option value="Nariño">Nariño</option>
+                                <option value="Cauca">Cauca</option>
+                                <option value="Tolima">Tolima</option>
+                                <option value="Quindío">Quindío</option>
+                                <option value="Caldas">Caldas</option>
+                                <option value="Risaralda">Risaralda</option>
+                                <option value="Santander">Santander</option>
+                            </select>
+                        </div>
+                        <button class="btn" onclick="showAllCoffees()">Mostrar Todos</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lista de Cafés -->
+            <div class="actions-section">
+                <h2 class="section-title">Lista de Cafés Registrados</h2>
+                <div id="coffeeList" class="coffee-list">
+                    <!-- Los cafés se mostrarán aquí dinámicamente -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para Editar -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <h3 style="margin-bottom: 20px; color: #2C1810;">✏️ Editar Café</h3>
+            <div class="form-group">
+                <label for="editName">Nombre del Café</label>
+                <input type="text" id="editName">
+            </div>
+            <div class="form-group">
+                <label for="editRegion">Región</label>
+                <select id="editRegion">
+                    <option value="Huila">Huila</option>
+                    <option value="Nariño">Nariño</option>
+                    <option value="Cauca">Cauca</option>
+                    <option value="Tolima">Tolima</option>
+                    <option value="Quindío">Quindío</option>
+                    <option value="Caldas">Caldas</option>
+                    <option value="Risaralda">Risaralda</option>
+                    <option value="Santander">Santander</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="editDescription">Descripción</label>
+                <textarea id="editDescription" rows="3"></textarea>
+            </div>
+            <div style="display: flex; gap: 10px; justify-content: flex-end; margin-top: 20px;">
+                <button class="btn" onclick="saveEdit()">Guardar Cambios</button>
+                <button class="btn btn-danger" onclick="closeEditModal()">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
