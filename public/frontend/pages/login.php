@@ -1,9 +1,9 @@
 <?php
 session_start();
 
-// Si ya hay una sesión iniciada, redirigir al dashboard
+// Si ya hay una sesión iniciada, redirigir al panel
 if (isset($_SESSION['usuario'])) {
-    header("Location: /public/admin/dashboard.php");
+    header("Location: /frontend/pages/login.php"); // o el archivo correcto
     exit();
 }
 
@@ -13,16 +13,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $correo = $_POST['email'] ?? '';
     $contrasena = $_POST['password'] ?? '';
 
-    require_once __DIR__ . '/../../backend/src/config/Database.php';
+    require_once __DIR__ . '/../../../src/config/Database.php';
+
+
     $db = (new \App\Config\Database())->connect();
 
-    $stmt = $db->prepare("SELECT * FROM usuarios WHERE correo = ?");
+    $stmt = $db->prepare("SELECT * FROM usuarios WHERE email = ?");
     $stmt->execute([$correo]);
     $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($usuario && password_verify($contrasena, $usuario['password'])) {
         $_SESSION['usuario'] = $usuario;
-        header("Location: /public/admin/dashboard.php");
+        header("Location: /frontend/pages/admin.html"); // <-- redirige al panel si todo está bien
         exit();
     } else {
         $error = "Correo o contraseña incorrectos";
@@ -44,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
     <div class="container">
         <div class="container-form">
-            <form class="sign-in" method="POST" action="/frontend/handlers/procesar_login.php">
+            <form class="sign-in" method="POST" action="">
                 <h2>Iniciar Sesión</h2>
                 <div class="social-networks">
                     <ion-icon name="logo-twitch"></ion-icon>

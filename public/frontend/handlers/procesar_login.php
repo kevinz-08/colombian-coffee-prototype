@@ -1,45 +1,25 @@
 <?php
-require_once __DIR__ . '/../../../vendor/autoload.php';
-
-use App\Config\Database;
-use App\Auth\Auth;
+session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Muestra lo que está llegando por POST
-    echo "<pre>";
-    print_r($_POST);
-    echo "</pre>";require_once __DIR__ . '/../../../vendor/autoload.php';
+    $correo = $_POST['email'] ?? '';
+    $contrasena = $_POST['password'] ?? '';
 
-    $correo = $_POST['email'] ?? null;
-    $contrasena = $_POST['password'] ?? null;
+    require_once __DIR__ . '/../../../src/config/Database.php';
 
-    if (!$correo || !$contrasena) {
-        echo "Faltan campos.";
-        exit;
-    }
+    $db = (new \App\Config\Database())->connect();
 
-    $conn = (new Database())->connect();
-    $stmt = $conn->prepare("SELECT * FROM usuarios WHERE email = ?");
+    $stmt = $db->prepare("SELECT * FROM usuarios WHERE email = ?");
     $stmt->execute([$correo]);
     $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if (!$usuario) {
-        echo "Usuario no encontrado en la base de datos.";
-        exit;
-    }
-
-    echo "<p>Usuario encontrado: " . htmlspecialchars($usuario['name']) . "</p>";
-
-    // Mostrar la contraseña recibida y la de la BD
-    echo "<p>Contraseña escrita: " . htmlspecialchars($contrasena) . "</p>";
-    echo "<p>Hash en la BD: " . htmlspecialchars($usuario['password']) . "</p>";
-
-    if (password_verify($contrasena, $usuario['password'])) {
-        echo "¡Login exitoso!";
-        // Auth::login($usuario);
-        // header('Location: /frontend/admin/variedades/index.php');
-        // exit;
+    if ($usuario && password_verify($contrasena, $usuario['password'])) {
+        $_SESSION['usuario'] = $usuario;
+        header("Location: /frontend/pages/admin.html");
+        exit();
     } else {
-        echo "Contraseña incorrecta.";
+        header("Location: /frontend/pages/login.php?error=1");
+        exit();
     }
 }
+?>
